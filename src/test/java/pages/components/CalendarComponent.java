@@ -13,7 +13,7 @@ public class CalendarComponent {
             $(".react-datepicker__day--00" + day).click();
         }
         else {
-            $(".react-datepicker__day--0" + day).click();
+            $(".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)").click();
         }
     }
 }

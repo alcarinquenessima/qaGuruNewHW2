@@ -14,7 +14,7 @@ public class DemoQARegistrationTest extends TestBase {
                         .setEmail("ivanIvanov@gmail.com")
                         .setGender("Other")
                         .setNumber("8999888998")
-                        .setDate("2", "August", "2000")
+                        .setDate("30", "August", "2000")
                         .setSubject("Chemistry")
                         .setHobbies("Reading")
                         .uploadPicture("mushroom.jpg")
