@@ -21,7 +21,7 @@ public class CheckResultComponent {
                 text(birthDateCheck),
                 text(subjectCheck),
                 text(hobbyCheck),
-                text("mushroom.jpg"),
+                text(pictureCheck),
                 text(addressCheck),
                 text(stateCityCheck),
                 text (pictureCheck)
