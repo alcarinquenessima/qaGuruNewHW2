@@ -12,7 +12,7 @@ public class CheckResultComponent {
                               String genderCheck, String numberCheck,
                               String birthDateCheck, String subjectCheck,
                               String hobbyCheck, String addressCheck,
-                              String stateCityCheck) {
+                              String stateCityCheck, String pictureCheck) {
         tableContent.shouldHave(
                 text(fullNameCheck),
                 text(emailCheck),
@@ -23,7 +23,8 @@ public class CheckResultComponent {
                 text(hobbyCheck),
                 text("mushroom.jpg"),
                 text(addressCheck),
-                text(stateCityCheck)
+                text(stateCityCheck),
+                text (pictureCheck)
         );
     };
         public void checkResultsOnlyNecessaryForms(String fullNameCheck, String genderCheck,

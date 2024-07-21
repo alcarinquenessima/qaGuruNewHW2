@@ -38,6 +38,7 @@ public class RegistrationPage {
     private String hobbyCheck;
     private String addressCheck;
     private String stateCityCheck;
+    private String pictureCheck;
 
 
     public RegistrationPage openPage (){
@@ -77,8 +78,9 @@ public class RegistrationPage {
         birthDateCheck = day + " " + month + "," + year;
         return this;
     }
-    public RegistrationPage uploadPicture () {
-        pictureUpload.uploadFromClasspath("mushroom.jpg");
+    public RegistrationPage uploadPicture (String value) {
+        pictureUpload.uploadFromClasspath(value);
+        pictureCheck = value;
         return this;
     }
     public RegistrationPage setSubject (String value){
@@ -118,7 +120,7 @@ public class RegistrationPage {
                 genderCheck, numberCheck,
                 birthDateCheck,subjectCheck,
                 hobbyCheck, addressCheck,
-                stateCityCheck);
+                stateCityCheck, pictureCheck);
     }
     public void checkResultsOnlyNecessaryForms () {
         checkResultComponent.checkResultsOnlyNecessaryForms

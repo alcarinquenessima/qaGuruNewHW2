@@ -17,7 +17,7 @@ public class DemoQARegistrationTest extends TestBase {
                         .setDate("2", "August", "2000")
                         .setSubject("Chemistry")
                         .setHobbies("Reading")
-                        .uploadPicture()
+                        .uploadPicture("mushroom.jpg")
                         .setAddress("Russia")
                         .setState("Haryana")
                         .setCity("Karnal")
