@@ -10,19 +10,19 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
-    public static SelenideElement nameInput = $("#firstName");
-    public static SelenideElement surnameInput = $("#lastName");
-    public static SelenideElement emailInput = $("#userEmail");
-    public static SelenideElement genderChoosing = $("#genterWrapper");
-    public static SelenideElement numberInput =  $("#userNumber");
-    public static SelenideElement pictureUpload = $("#uploadPicture");
-    public static SelenideElement hobbyChoosing = $("#hobbiesWrapper");
-    public static SelenideElement subjectInput =  $("#subjectsInput");
-    public static SelenideElement address = $("#currentAddress");
-    public static SelenideElement stateInput = $("#state");
-    public static SelenideElement cityInput = $("#city");
-    public static SelenideElement submitButton = $("#submit");
-    public static SelenideElement resultsTable = $(".table");
+    private final SelenideElement nameInput = $("#firstName");
+    private final SelenideElement surnameInput = $("#lastName");
+    private final SelenideElement emailInput = $("#userEmail");
+    private final SelenideElement genderChoosing = $("#genterWrapper");
+    private final SelenideElement numberInput =  $("#userNumber");
+    private final SelenideElement pictureUpload = $("#uploadPicture");
+    private final SelenideElement hobbyChoosing = $("#hobbiesWrapper");
+    private final SelenideElement subjectInput =  $("#subjectsInput");
+    private final SelenideElement address = $("#currentAddress");
+    private final SelenideElement stateInput = $("#state");
+    private final SelenideElement cityInput = $("#city");
+    private final SelenideElement submitButton = $("#submit");
+    private final SelenideElement resultsTable = $(".table");
 
 
     CalendarComponent calendarComponent = new CalendarComponent();
@@ -41,10 +41,13 @@ public class RegistrationPage {
     private String pictureCheck;
 
 
-    public RegistrationPage openPage (){
-        open("/automation-practice-form");
+    public RegistrationPage removeBanner() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
+        return this;
+    }
+    public RegistrationPage openPage (){
+        open("/automation-practice-form");
         return this;
     }
     public RegistrationPage setName (String value) {
@@ -114,18 +117,12 @@ public class RegistrationPage {
         submitButton.click();
         return this;
     }
-    public void checkResults () {
-        checkResultComponent.checkResults
-                (fullNameCheck,emailCheck,
-                genderCheck, numberCheck,
-                birthDateCheck,subjectCheck,
-                hobbyCheck, addressCheck,
-                stateCityCheck, pictureCheck);
+
+    public RegistrationPage checkResults (String key, String value) {
+        checkResultComponent.checkResults(key, value);
+        return this;
     }
-    public void checkResultsOnlyNecessaryForms () {
-        checkResultComponent.checkResultsOnlyNecessaryForms
-                (fullNameCheck, genderCheck, numberCheck, birthDateCheck);
-    }
+
     public void checkErrors () {
         resultsTable.shouldNotBe(visible);
     }

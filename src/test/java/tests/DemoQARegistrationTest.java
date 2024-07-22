@@ -9,6 +9,7 @@ public class DemoQARegistrationTest extends TestBase {
     @Test
     void fillFormTest() {
         registrationPage.openPage()
+                        .removeBanner ()
                         .setName("Ivan")
                         .setSurname("Ivanov")
                         .setEmail("ivanIvanov@gmail.com")
@@ -22,27 +23,41 @@ public class DemoQARegistrationTest extends TestBase {
                         .setState("Haryana")
                         .setCity("Karnal")
                         .submitInfo()
-                        .checkResults ();
+                        .checkResults("Student Name", "Ivan Ivanov")
+                        .checkResults("Student Email", "ivanIvanov@gmail.com")
+                        .checkResults("Gender", "Other")
+                        .checkResults("Mobile", "8999888998")
+                        .checkResults("Date of Birth", "30 August,2000")
+                        .checkResults("Subjects", "Chemistry")
+                        .checkResults("Hobbies", "Reading")
+                        .checkResults("Picture", "mushroom.jpg")
+                        .checkResults("Address", "Russia")
+                        .checkResults("State and City", "Haryana Karnal");
     }
     @Test
     void onlyNecessaryFormsRegistrationTest() {
         registrationPage.openPage()
+                .removeBanner ()
                 .setName("Ivan")
                 .setSurname("Ivanov")
                 .setGender("Other")
                 .setNumber("8999888998")
-                .setDate("2", "August", "2000")
+                .setDate("20", "August", "2000")
                 .submitInfo()
-                .checkResultsOnlyNecessaryForms ();
+                .checkResults("Student Name", "Ivan Ivanov")
+                .checkResults("Gender", "Other")
+                .checkResults("Mobile", "8999888998")
+                .checkResults("Date of Birth", "20 August,2000");
     }
     @Test
-    void NegativeRegistrationTest (){
+    void negativeRegistrationTest(){
         registrationPage.openPage()
+                .removeBanner ()
                 .setName("Ivan")
                 .setSurname("Ivanov")
                 .setGender("Other")
                 .setNumber("Not number")
-                .setDate("2", "August", "2000")
+                .setDate("20", "August", "2000")
                 .submitInfo()
                 .checkErrors();
     }

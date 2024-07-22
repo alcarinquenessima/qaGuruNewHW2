@@ -6,35 +6,9 @@ import com.codeborne.selenide.SelenideElement;
 
 
 public class CheckResultComponent {
-    private static SelenideElement tableContent = $(".table-hover");
+    private final SelenideElement resultsTable = $(".table");
 
-    public void checkResults (String fullNameCheck, String  emailCheck,
-                              String genderCheck, String numberCheck,
-                              String birthDateCheck, String subjectCheck,
-                              String hobbyCheck, String addressCheck,
-                              String stateCityCheck, String pictureCheck) {
-        tableContent.shouldHave(
-                text(fullNameCheck),
-                text(emailCheck),
-                text(genderCheck),
-                text(numberCheck),
-                text(birthDateCheck),
-                text(subjectCheck),
-                text(hobbyCheck),
-                text(pictureCheck),
-                text(addressCheck),
-                text(stateCityCheck),
-                text (pictureCheck)
-        );
-    };
-        public void checkResultsOnlyNecessaryForms(String fullNameCheck, String genderCheck,
-                                                   String numberCheck, String birthDateCheck)
-        {
-            tableContent.shouldHave(
-                    text(fullNameCheck),
-                    text(genderCheck),
-                    text(numberCheck),
-                    text(birthDateCheck)
-            );
+    public void checkResults(String key, String value) {
+        resultsTable.shouldHave(text(key + " " + value));
     }
 }
